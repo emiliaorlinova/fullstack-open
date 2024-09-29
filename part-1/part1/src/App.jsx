@@ -6,9 +6,12 @@ const Button = ({ onClick, text }) => {
 
 const StatisticLine = ({ text, value }) => {
   return (
-    <p>
-      {text} {value}
-    </p>
+    <tbody>
+      <tr>
+        <td>{text}</td>
+        <td>{value}</td>
+      </tr>
+    </tbody>
   );
 };
 
@@ -61,7 +64,9 @@ const App = () => {
       />
       <h2>Statistics</h2>
       {good || neutral || bad ? (
-        <Statistics good={good} neutral={neutral} bad={bad} all={all} />
+        <table>
+          <Statistics good={good} neutral={neutral} bad={bad} all={all} />
+        </table>
       ) : (
         <p>No feedback given</p>
       )}
