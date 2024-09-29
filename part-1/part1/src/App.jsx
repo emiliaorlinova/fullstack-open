@@ -4,15 +4,26 @@ const Button = ({ onClick, text }) => {
   return <button onClick={onClick}>{text}</button>;
 };
 
+const StatisticLine = ({ text, value }) => {
+  return (
+    <p>
+      {text} {value}
+    </p>
+  );
+};
+
 const Statistics = ({ good, neutral, bad, all }) => {
   return (
     <>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-      <p>all {all}</p>
-      <p>average {good && bad ? (good - bad) / all : 0}</p>
-      <p>positive {good ? (good / all) * 100 : 0} %</p>
+      <StatisticLine text="good" value={good} />
+      <StatisticLine text="neutral" value={neutral} />
+      <StatisticLine text="bad" value={bad} />
+      <StatisticLine text="all" value={all} />
+      <StatisticLine
+        text="average"
+        value={good && bad ? (good - bad) / all : 0}
+      />
+      <StatisticLine text="positive" value={good ? (good / all) * 100 : 0} />
     </>
   );
 };
@@ -23,7 +34,7 @@ const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
   const [all, setAll] = useState(0);
-  console.log(good);
+
   return (
     <div>
       <h2>Give feedback</h2>
