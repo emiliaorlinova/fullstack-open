@@ -7,7 +7,6 @@ const Button = ({ onClick, text }) => {
 const Statistics = ({ good, neutral, bad, all }) => {
   return (
     <>
-      <h2>Statistics</h2>
       <p>good {good}</p>
       <p>neutral {neutral}</p>
       <p>bad {bad}</p>
@@ -24,6 +23,7 @@ const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
   const [all, setAll] = useState(0);
+  console.log(good);
   return (
     <div>
       <h2>Give feedback</h2>
@@ -48,7 +48,12 @@ const App = () => {
         }}
         text="bad"
       />
-      <Statistics good={good} neutral={neutral} bad={bad} all={all} />
+      <h2>Statistics</h2>
+      {good || neutral || bad ? (
+        <Statistics good={good} neutral={neutral} bad={bad} all={all} />
+      ) : (
+        <p>No feedback given</p>
+      )}
     </div>
   );
 };
